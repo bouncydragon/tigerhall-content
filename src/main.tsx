@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { ChakraProvider } from '@chakra-ui/react';
 import App from './App.tsx';
-import theme from './utils/theme.tsx';
+import theme from './theme.tsx';
 
 const client = new ApolloClient({
   uri: 'https://api.tigerhall.net/v2/',

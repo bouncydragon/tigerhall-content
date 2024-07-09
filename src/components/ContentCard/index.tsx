@@ -1,9 +1,22 @@
 import { Fragment } from 'react';
-import { Box, Flex, Image, Text, Icon, Stack, Link, Button, ButtonGroup } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  Image,
+  Text,
+  Icon,
+  Stack,
+  Link,
+  Button,
+  ButtonGroup,
+  Progress,
+} from '@chakra-ui/react';
 import { LuClock3, LuShare2, LuBookmark } from 'react-icons/lu';
 import { RiProgress3Line } from 'react-icons/ri';
 import { MdHeadset } from 'react-icons/md';
+
 import { TExpert } from '../../types/Content.ts';
+
 import './content-card.scss';
 
 type TContentCard = {
@@ -12,14 +25,13 @@ type TContentCard = {
   contentCategory: string;
   contentName: string;
   experts: TExpert[];
-  id: string;
 };
 
 export const ContentCard = (props: Readonly<TContentCard>): JSX.Element => {
-  const { contentImg, contentLength, contentCategory, contentName, experts, id } = props;
+  const { contentImg, contentLength, contentCategory, contentName, experts } = props;
   return (
     <>
-      <Box height={104} minHeight={104} bg='lightGray.300' width='100%' data-id={id}>
+      <Box height={104} minHeight={104} bg='lightGray.300' width='100%'>
         <Stack
           borderTopLeftRadius='lg'
           borderBottomRightRadius='lg'
@@ -77,8 +89,7 @@ export const ContentCard = (props: Readonly<TContentCard>): JSX.Element => {
           </Text>
         </Stack>
       </Box>
-      {/*<Flex alignItems="center" width="100%">*/}
-
+      <Progress colorScheme='tigerOrange' size='xs' value={contentLength} />
       <Stack direction={['row', 'column']} spacing='1px' bg='white' padding={2}>
         <Text
           as='h3'
