@@ -122,8 +122,8 @@ const colors = {
 };
 
 const fonts = {
-  body: 'PP Neue Montreal, Arial, sans-serif',
-  heading: 'PP Formula Arial, sans-serif',
+  body: 'PP Neue Montreal, sans-serif',
+  heading: 'PP Formula, sans-serif',
   mono: 'Roboto-Mono, monospace',
 };
 

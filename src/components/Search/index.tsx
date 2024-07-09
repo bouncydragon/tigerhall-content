@@ -12,7 +12,7 @@ export const Search = () => {
           width='100%'
           bg='lightGray.920'
           borderColor='lightGray.720'
-          borderRadius='4px'
+          borderRadius={4}
           color='secondary.white'
           focusBorderColor='lightGray.700'
           _placeholder={{ color: 'lightGray.720' }}

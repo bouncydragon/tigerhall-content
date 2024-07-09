@@ -1,0 +1,15 @@
+.button_group {
+  & > button {
+    appearance: none;
+    background: transparent;
+    box-shadow: none;
+    height: 1.75rem;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+    min-width: 1.5rem;
+    &:hover {
+      background: inherit;
+    }
+  }
+}
