@@ -1,5 +1,6 @@
 import { Input, InputGroup, InputLeftElement } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
+import { SEARCH_PLACEHOLDER } from '../../constants';
 
 export const Search = () => {
   return (
@@ -8,7 +9,7 @@ export const Search = () => {
         <InputLeftElement pointerEvents='none' children={<SearchIcon color='white' />} />
         <Input
           type='text'
-          placeholder='Search..'
+          placeholder={SEARCH_PLACEHOLDER}
           width='100%'
           bg='lightGray.920'
           borderColor='lightGray.720'

@@ -1,5 +1,6 @@
 import { Box, Container, Flex, Image, Text } from '@chakra-ui/react';
 import { Search } from '../Search';
+import { TIGERHALL_TEXT } from '../../constants';
 import TigerhallLogo from '../../assets/tiegrhall-logo.svg';
 
 export const Header = () => {
@@ -17,7 +18,7 @@ export const Header = () => {
               letterSpacing={2}
               color='tigerOrange.600'
             >
-              TIGERHALL
+              {TIGERHALL_TEXT}
             </Text>
           </Flex>
           <Box m='auto' w='50%'>

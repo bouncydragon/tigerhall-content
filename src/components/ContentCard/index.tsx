@@ -18,6 +18,7 @@ import { MdHeadset } from 'react-icons/md';
 import { TExpert } from '../../types/Content.ts';
 
 import './content-card.scss';
+import { COMPLETED_TEXT, MINUTES_LETTER } from '../../constants';
 
 type TContentCard = {
   contentImg: string;
@@ -46,7 +47,7 @@ export const ContentCard = (props: Readonly<TContentCard>): JSX.Element => {
         >
           <Icon as={RiProgress3Line} color='tigerOrange.600' fontSize='sm' width='fit-content' />
           <Text fontSize='xs' color='darkGray.720' fontWeight={700}>
-            30% Completed
+            {COMPLETED_TEXT}
           </Text>
         </Stack>
         <Image
@@ -85,7 +86,8 @@ export const ContentCard = (props: Readonly<TContentCard>): JSX.Element => {
         >
           <Icon as={LuClock3} color='white' fontSize='sm' width='fit-content' />
           <Text fontSize='xs' color='white' fontWeight={700}>
-            {contentLength}m
+            {contentLength}
+            {MINUTES_LETTER}
           </Text>
         </Stack>
       </Box>

@@ -5,6 +5,7 @@ import { GET_CONTENT_CARDS } from './graphql/queries/ContentCard';
 import { Header, ContentCard } from './components';
 import { optimizeImageUri, secondsToMinutes } from './helpers';
 import { TEdge } from './types/Content.ts';
+import { TIGERHALL_LIBRARY } from './constants';
 
 import './App.scss';
 
@@ -18,7 +19,7 @@ const App = (): JSX.Element => {
       <Header />
       <Container maxW={1280} py={4} px={20}>
         <Heading as='h2' fontSize='2xl' fontWeight={700} color='white' paddingBottom={6}>
-          Tigerhall Library
+          {TIGERHALL_LIBRARY}
         </Heading>
         <Grid templateColumns='repeat(auto-fit, minmax(15rem, 1fr))' rowGap={12} columnGap={6}>
           {data?.contentCards?.edges.map((content: TEdge) => (
