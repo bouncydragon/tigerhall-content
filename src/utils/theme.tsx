@@ -66,8 +66,10 @@ const colors = {
         500: '#E3E5E5',
         600: '#DCDEDF',
         700: '#CDCFD0',
+        720: '#797670',
         800: '#BEC0C2',
         900: '#AFB2B3',
+        920: '#383733',
     },
     darkGray: {
         50: '#A0A3A5',
@@ -79,7 +81,7 @@ const colors = {
         600: '#1C1E1F',
         700: '#151617',
         800: '#0E0F0F',
-        900: '#070708'
+        900: '#070708',
     },
     green: {
         50: '#FOFFF4',
@@ -120,9 +122,9 @@ const colors = {
 };
 
 const fonts = {
-    body: 'PP Neue Montreal',
-    heading: 'PP Formula',
-    mono: 'Roboto-Mono'
+    body: 'PP Neue Montreal, Arial, sans-serif',
+    heading: 'PP Formula Arial, sans-serif',
+    mono: 'Roboto-Mono, monospace'
 }
 
 const fontSizes = {
