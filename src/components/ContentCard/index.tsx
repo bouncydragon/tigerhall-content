@@ -9,19 +9,19 @@ export const ContentCard = () => {
     <Flex
       as='article'
       flexDirection='column'
-      bg='secondary.white'
+      bg='white'
       minWidth={244}
       maxWidth={260}
       borderRadius='lg'
       overflow='hidden'
       position='relative'
     >
-      <Box height='6.5rem' minHeight='6.5rem' overflow='hidden' bg='lightGray.300'>
+      <Box height={104} minHeight={104} overflow='hidden' bg='lightGray.300'>
         <Stack
           borderTopLeftRadius='lg'
           borderBottomRightRadius='lg'
           position='absolute'
-          bg='secondary.white'
+          bg='white'
           border='none'
           py={1.5}
           px={2.5}
@@ -53,7 +53,7 @@ export const ContentCard = () => {
           px={1}
           py={1}
         >
-          <Icon as={MdHeadset} color='secondary.white' fontSize='sm' width='fit-content' />
+          <Icon as={MdHeadset} color='white' fontSize='sm' width='fit-content' />
         </Flex>
         <Stack
           direction={['column', 'row']}
@@ -68,13 +68,13 @@ export const ContentCard = () => {
           py={1}
           px={1.5}
         >
-          <Icon as={LuClock3} color='secondary.white' fontSize='sm' width='fit-content' />
-          <Text fontSize='xs' color='secondary.white' fontWeight={700}>
+          <Icon as={LuClock3} color='white' fontSize='sm' width='fit-content' />
+          <Text fontSize='xs' color='white' fontWeight={700}>
             20m
           </Text>
         </Stack>
       </Box>
-      <Box p='2' bg='secondary.white'>
+      <Box p='2' bg='white'>
         <Text
           as='h3'
           fontSize='2xs'
@@ -90,7 +90,7 @@ export const ContentCard = () => {
           fontWeight='bold'
           paddingTop='0.125rem'
           textOverflow='ellipsis'
-          color='secondary.black'
+          color='black'
           textAlign='left'
         >
           <Link href='#'>Peak Performance: Going From Good to Great with Simon Taudel</Link>
@@ -109,7 +109,7 @@ export const ContentCard = () => {
             as='span'
             fontSize='xs'
             fontWeight='bold'
-            color='lightGray.700'
+            color='lightGray.720'
             textOverflow='ellipsis'
           >
             Subway APAC

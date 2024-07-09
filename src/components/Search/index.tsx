@@ -5,7 +5,7 @@ export const Search = () => {
   return (
     <>
       <InputGroup>
-        <InputLeftElement pointerEvents='none' children={<SearchIcon color='secondary.white' />} />
+        <InputLeftElement pointerEvents='none' children={<SearchIcon color='white' />} />
         <Input
           type='text'
           placeholder='Search..'
@@ -13,8 +13,9 @@ export const Search = () => {
           bg='lightGray.920'
           borderColor='lightGray.720'
           borderRadius={4}
-          color='secondary.white'
-          focusBorderColor='lightGray.700'
+          color='white'
+          focusBorderColor='tigerOrange.600'
+          _hover={{ borderColor: 'tigerOrange.600'}}
           _placeholder={{ color: 'lightGray.720' }}
         />
       </InputGroup>

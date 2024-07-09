@@ -1,15 +1,8 @@
 import { extendTheme } from '@chakra-ui/react';
 
 const colors = {
-  primary: '#FF5900',
-  secondary: {
-    soSunny: '#F78104',
-    kindaYellow: '#FAAB36',
-    teal: '#005F60',
-    gray: '#F5F3EE',
-    black: '#000000',
-    white: '#FFFFFF',
-  },
+  black: '#000000',
+  white: '#FFFFFF',
   tigerOrange: {
     100: '#FFF3ED',
     200: '#FFDECC',
