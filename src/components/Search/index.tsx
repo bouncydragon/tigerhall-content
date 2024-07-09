@@ -15,7 +15,7 @@ export const Search = () => {
           borderRadius={4}
           color='white'
           focusBorderColor='tigerOrange.600'
-          _hover={{ borderColor: 'tigerOrange.600'}}
+          _hover={{ borderColor: 'tigerOrange.600' }}
           _placeholder={{ color: 'lightGray.720' }}
         />
       </InputGroup>

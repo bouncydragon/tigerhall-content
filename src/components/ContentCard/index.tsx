@@ -1,22 +1,25 @@
-import { Box, Flex, Image, Text, Icon, Stack, Link, Button } from '@chakra-ui/react';
+import { Fragment } from 'react';
+import { Box, Flex, Image, Text, Icon, Stack, Link, Button, ButtonGroup } from '@chakra-ui/react';
 import { LuClock3, LuShare2, LuBookmark } from 'react-icons/lu';
 import { RiProgress3Line } from 'react-icons/ri';
 import { MdHeadset } from 'react-icons/md';
+import { TExpert } from '../../types/Content.ts';
 import './content-card.scss';
 
-export const ContentCard = () => {
+type TContentCard = {
+  contentImg: string;
+  contentLength: number;
+  contentCategory: string;
+  contentName: string;
+  experts: TExpert[];
+  id: string;
+};
+
+export const ContentCard = (props: Readonly<TContentCard>): JSX.Element => {
+  const { contentImg, contentLength, contentCategory, contentName, experts, id } = props;
   return (
-    <Flex
-      as='article'
-      flexDirection='column'
-      bg='white'
-      minWidth={244}
-      maxWidth={260}
-      borderRadius='lg'
-      overflow='hidden'
-      position='relative'
-    >
-      <Box height={104} minHeight={104} overflow='hidden' bg='lightGray.300'>
+    <>
+      <Box height={104} minHeight={104} bg='lightGray.300' width='100%' data-id={id}>
         <Stack
           borderTopLeftRadius='lg'
           borderBottomRightRadius='lg'
@@ -35,7 +38,7 @@ export const ContentCard = () => {
           </Text>
         </Stack>
         <Image
-          src='https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
+          src={contentImg}
           alt='Communicating as a Leader'
           height='100%'
           width='100%'
@@ -70,11 +73,13 @@ export const ContentCard = () => {
         >
           <Icon as={LuClock3} color='white' fontSize='sm' width='fit-content' />
           <Text fontSize='xs' color='white' fontWeight={700}>
-            20m
+            {contentLength}m
           </Text>
         </Stack>
       </Box>
-      <Box p='2' bg='white'>
+      {/*<Flex alignItems="center" width="100%">*/}
+
+      <Stack direction={['row', 'column']} spacing='1px' bg='white' padding={2}>
         <Text
           as='h3'
           fontSize='2xs'
@@ -82,7 +87,7 @@ export const ContentCard = () => {
           fontWeight='medium'
           textTransform='uppercase'
         >
-          Communicating as a Leader
+          {contentCategory}
         </Text>
         <Text
           as='h2'
@@ -93,9 +98,9 @@ export const ContentCard = () => {
           color='black'
           textAlign='left'
         >
-          <Link href='#'>Peak Performance: Going From Good to Great with Simon Taudel</Link>
+          <Link href='#'>{contentName}</Link>
         </Text>
-        <Flex flexDirection='column' paddingTop='0.5rem' paddingBottom='0.5rem'>
+        <Flex flexDirection='column' paddingTop='0.5rem'>
           <Text
             as='span'
             fontSize='xs'
@@ -103,7 +108,13 @@ export const ContentCard = () => {
             color='lightGray.800'
             textOverflow='ellipsis'
           >
-            Jane Doe
+            {experts.map(
+              (expert: TExpert, index: number): JSX.Element => (
+                <Fragment key={index}>
+                  {`${expert.firstName} ${expert.lastName}${index < experts.length - 1 ? ', ' : ''}`}
+                </Fragment>
+              )
+            )}
           </Text>
           <Text
             as='span'
@@ -112,18 +123,24 @@ export const ContentCard = () => {
             color='lightGray.720'
             textOverflow='ellipsis'
           >
-            Subway APAC
+            {experts.map(
+              (expert: TExpert, index: number): JSX.Element => (
+                <Fragment key={index}>
+                  {`${expert.company}${index < experts.length - 1 && expert.company !== '' ? ', ' : ''}`}
+                </Fragment>
+              )
+            )}
           </Text>
         </Flex>
-        <Flex role='group' justify='flex-end' className='button_group'>
+        <ButtonGroup justifyContent='end' position='absolute' bottom={1} right={1}>
           <Button>
             <Icon as={LuShare2} color='tigerOrange.600' fontSize='lg' width='fit-content' />
           </Button>
           <Button>
             <Icon as={LuBookmark} color='tigerOrange.600' fontSize='lg' width='fit-content' />
           </Button>
-        </Flex>
-      </Box>
-    </Flex>
+        </ButtonGroup>
+      </Stack>
+    </>
   );
 };
