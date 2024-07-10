@@ -74,6 +74,14 @@ const App = (): JSX.Element => {
   };
 
   const renderContentCards = (edges: TEdge[]): JSX.Element => {
+    if (error) {
+      return (
+        <Flex color='lightGray.720' alignItems='center' flexDirection='column' padding='24'>
+          <Heading as='h6'>Something went wrong.</Heading>
+          <Text as='p'>{error.message}</Text>
+        </Flex>
+      );
+    }
     if (edges?.length > 0) {
       return (
         <>
@@ -84,7 +92,7 @@ const App = (): JSX.Element => {
               position='relative'
               minWidth={240}
               maxWidth={{ lg: 260 }}
-              height={248}
+              height={280}
               bg='white'
               borderRadius='lg'
               overflow='hidden'
@@ -92,7 +100,7 @@ const App = (): JSX.Element => {
               <ContentCard
                 contentImg={optimizeImageUri(content.image.uri)}
                 contentName={content.name}
-                contentCategory={content.name}
+                contentCategory={content.categories[0].name || ''}
                 contentLength={secondsToMinutes(content.length)}
                 users={content.experts || content.participants}
               />
@@ -111,9 +119,13 @@ const App = (): JSX.Element => {
 
   const renderContent = () => {
     return (
-      <Grid templateColumns='repeat(auto-fit, minmax(15rem, 1fr))' rowGap={{base: 6, lg: 12}} columnGap={6}>
+      <Grid
+        templateColumns='repeat(auto-fit, minmax(15rem, 1fr))'
+        rowGap={{ base: 6, lg: 12 }}
+        columnGap={6}
+      >
         {loading
-          ? Array.from({ length: 10 }).map((_, index) => (
+          ? Array?.from({ length: 10 }).map((_, index) => (
               <GridItem
                 key={index}
                 as='article'
@@ -132,8 +144,6 @@ const App = (): JSX.Element => {
       </Grid>
     );
   };
-
-  if (error) return <p>Error : {error.message}</p>;
 
   return (
     <Box bg='darkGray.700' height='100%'>
@@ -157,14 +167,14 @@ const App = (): JSX.Element => {
           />
         </InputGroup>
       </Header>
-      <Container maxW={1280} px={{base: 5, sm: 10, md: 20}} pb={5} pt={50}>
+      <Container maxW={1280} px={{ base: 5, sm: 10, md: 20 }} pb={5} pt={50}>
         <Heading
           as='h2'
           fontSize='2xl'
           fontWeight={700}
           color='white'
-          paddingBottom={{ base: 10, lg: 6}}
-          textAlign={{ base: 'center', lg: 'left'}}
+          paddingBottom={{ base: 10, lg: 6 }}
+          textAlign={{ base: 'center', lg: 'left' }}
         >
           {TIGERHALL_LIBRARY}
         </Heading>
@@ -178,6 +188,7 @@ const App = (): JSX.Element => {
                 emptyColor='lightGray.600'
                 color='tigerOrange.600'
                 size='xl'
+                data-testid="loading-spinner"
               />
             </Flex>
           )}

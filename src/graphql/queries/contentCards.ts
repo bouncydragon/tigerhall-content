@@ -7,14 +7,15 @@ export const GET_CONTENT_CARDS = gql`
     ) {
       edges {
         ... on Podcast {
-          id
           name
           length
           slug
           image {
             alt
             uri
-            originalName
+          }
+          categories {
+            name
           }
           experts {
             firstName
@@ -23,14 +24,15 @@ export const GET_CONTENT_CARDS = gql`
           }
         }
         ... on Stream {
-          id
           name
           length
           slug
           image {
             alt
             uri
-            originalName
+          }
+          categories {
+            name
           }
           participants {
             firstName

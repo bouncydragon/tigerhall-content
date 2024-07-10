@@ -1,4 +1,4 @@
-import { Box, Progress, Skeleton, SkeletonText, Stack } from '@chakra-ui/react';
+import { Box, Progress, Skeleton, Stack } from '@chakra-ui/react';
 
 export const ContentCardLoader = (): JSX.Element => {
   return (
@@ -7,8 +7,11 @@ export const ContentCardLoader = (): JSX.Element => {
         <Skeleton height='inherit'></Skeleton>
       </Box>
       <Progress colorScheme='tigerOrange' size='xs' value={0} />
-      <Stack direction={['row', 'column']} spacing='1px' bg='white' padding={2}>
-        <SkeletonText mt='4' noOfLines={4} spacing='4' skeletonHeight='2' />
+      <Stack direction={['row', 'column']} spacing={2.5} bg='white' padding={2}>
+        <Skeleton height={3} width={65} />
+        <Skeleton height={3} width={79} />
+        <Skeleton height={3} width={50} />
+        <Skeleton height={3} width={40} />
       </Stack>
     </>
   );

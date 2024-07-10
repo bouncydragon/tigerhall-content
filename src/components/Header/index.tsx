@@ -11,7 +11,7 @@ export const Header = ({ children }: HeaderProps) => {
       <Container maxW={1280}>
         <Flex as='header' bg='inherit' px={0.75} py={2.5}>
           <Flex align='center'>
-            <Image src={TigerhallLogo} alt='tigerhall' />
+            <Image src={TigerhallLogo} alt='tigerhall-logo' />
             <Text
               fontSize='xs'
               fontWeight='black'
