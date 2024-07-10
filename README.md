@@ -1,30 +1,59 @@
-# React + TypeScript + Vite
+# Tigerhall Library
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Templated from Vite + React & Typescript.
 
-Currently, two official plugins are available:
+### How to run the project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+1. Use the listed versions below:
+```shell
+  "npm": ">=10.0.0",
+  "node": ">=21"
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. Clone the project
+```shell
+  git clone <SSH || HTTP || DOWNLOAD DIRECTLY>
+```
+
+3. Change directory to the folder
+```shell
+  cd tigerhall-content
+```
+
+4. Install dependencies
+```shell
+  # pnpm users
+  pnpm install
+    
+  # yarn users
+  yarn install
+    
+  # npm users
+  npm install
+```
+
+5. After successful installation, run the project
+```shell
+  # pnpm users
+  pnpm run dev
+    
+  # yarn users
+  yarn run dev
+    
+  # npm users
+  npm run dev
+```
+
+6. Navigate to [localhost:3000](http://localhost:3000/) to see the project.
+
+### How to run the tests
+
+1. Run test with coverage and access
+```shell
+  vitest --ui --coverage.enabled=true
+```
+
+2. Navigate to [localhost:51204/__vitest__/#/](http://localhost:51204/__vitest__/#/) to see the test and its coverage.
+
+## Comment and Suggestion
+> I really want to know your thoughts on my work. Feedbacks are highly appreciated.
