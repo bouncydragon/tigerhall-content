@@ -139,5 +139,15 @@ const fontSizes = {
   '10xl': '108px',
 };
 
-const theme = extendTheme({ colors, fonts, fontSizes });
+const breakpoints = {
+  base: '320px',
+  xs: '345px',
+  sm: '375px',
+  md: '768px',
+  lg: '960px',
+  xl: '1200px',
+  '2xl': '1536px',
+}
+
+const theme = extendTheme({ breakpoints, colors, fonts, fontSizes });
 export default theme;

@@ -10,16 +10,22 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
+  Spinner,
   Text,
 } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 
 import { GET_CONTENT_CARDS } from './graphql/queries/contentCards.ts';
-import { Header, ContentCard } from './components';
+import { Header, ContentCard, ContentCardLoader } from './components';
 import { useDebounce } from './hooks';
 import { optimizeImageUri, secondsToMinutes } from './helpers';
 import { TEdge } from './types/Content.ts';
-import {IMPROVE_SEARCH, NO_RESULTS_FOUND, SEARCH_PLACEHOLDER, TIGERHALL_LIBRARY} from './constants';
+import {
+  IMPROVE_SEARCH,
+  NO_RESULTS_FOUND,
+  SEARCH_PLACEHOLDER,
+  TIGERHALL_LIBRARY,
+} from './constants';
 
 import './App.scss';
 
@@ -40,7 +46,7 @@ const App = (): JSX.Element => {
       const scrollIsAtBottom =
         window.innerHeight + document.documentElement.scrollTop + 1 >=
         document.documentElement.scrollHeight;
-      if (scrollIsAtBottom) {
+      if (scrollIsAtBottom && !loading) {
         handleFetchMore();
       }
     };
@@ -68,16 +74,16 @@ const App = (): JSX.Element => {
   };
 
   const renderContentCards = (edges: TEdge[]): JSX.Element => {
-    if (edges.length > 0) {
+    if (edges?.length > 0) {
       return (
-        <Grid templateColumns='repeat(auto-fit, minmax(15rem, 1fr))' rowGap={12} columnGap={6}>
+        <>
           {edges.map((content: TEdge) => (
             <GridItem
               key={content.slug}
               as='article'
               position='relative'
               minWidth={240}
-              maxWidth={260}
+              maxWidth={{ lg: 260 }}
               height={248}
               bg='white'
               borderRadius='lg'
@@ -92,7 +98,7 @@ const App = (): JSX.Element => {
               />
             </GridItem>
           ))}
-        </Grid>
+        </>
       );
     }
     return (
@@ -103,7 +109,30 @@ const App = (): JSX.Element => {
     );
   };
 
-  if (loading) return <p>Loading...</p>;
+  const renderContent = () => {
+    return (
+      <Grid templateColumns='repeat(auto-fit, minmax(15rem, 1fr))' rowGap={{base: 6, lg: 12}} columnGap={6}>
+        {loading
+          ? Array.from({ length: 10 }).map((_, index) => (
+              <GridItem
+                key={index}
+                as='article'
+                position='relative'
+                minWidth={240}
+                maxWidth={{ lg: 260 }}
+                height={248}
+                bg='white'
+                borderRadius='lg'
+                overflow='hidden'
+              >
+                <ContentCardLoader key={index} />
+              </GridItem>
+            ))
+          : renderContentCards(data?.contentCards?.edges)}
+      </Grid>
+    );
+  };
+
   if (error) return <p>Error : {error.message}</p>;
 
   return (
@@ -128,12 +157,30 @@ const App = (): JSX.Element => {
           />
         </InputGroup>
       </Header>
-      <Container maxW={1280} px={20} pb={5} pt={50}>
-        <Heading as='h2' fontSize='2xl' fontWeight={700} color='white' paddingBottom={6}>
+      <Container maxW={1280} px={{base: 5, sm: 10, md: 20}} pb={5} pt={50}>
+        <Heading
+          as='h2'
+          fontSize='2xl'
+          fontWeight={700}
+          color='white'
+          paddingBottom={{ base: 10, lg: 6}}
+          textAlign={{ base: 'center', lg: 'left'}}
+        >
           {TIGERHALL_LIBRARY}
         </Heading>
         <Box minH='100vh' width='100%'>
-          {renderContentCards(data?.contentCards?.edges)}
+          {renderContent()}
+          {isLoadingMore && (
+            <Flex justifyContent='center' alignItems='center' mt={20} mb={10}>
+              <Spinner
+                thickness='4px'
+                speed='0.65s'
+                emptyColor='lightGray.600'
+                color='tigerOrange.600'
+                size='xl'
+              />
+            </Flex>
+          )}
         </Box>
       </Container>
     </Box>

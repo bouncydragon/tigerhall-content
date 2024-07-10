@@ -41,7 +41,7 @@ export const ContentCard = (props: Readonly<TContentCard>): JSX.Element => {
           border='none'
           py={1.5}
           px={2.5}
-          direction={['column', 'row']}
+          direction="row"
           spacing={1}
           alignItems='center'
         >
@@ -72,7 +72,7 @@ export const ContentCard = (props: Readonly<TContentCard>): JSX.Element => {
           <Icon as={MdHeadset} color='white' fontSize='sm' width='fit-content' />
         </Flex>
         <Stack
-          direction={['column', 'row']}
+          direction="row"
           spacing={1}
           bg='rgba(21, 22, 23, 0.7)'
           fontSize='xs'
@@ -92,7 +92,7 @@ export const ContentCard = (props: Readonly<TContentCard>): JSX.Element => {
         </Stack>
       </Box>
       <Progress colorScheme='tigerOrange' size='xs' value={contentLength} />
-      <Stack direction={['row', 'column']} spacing='1px' bg='white' padding={2}>
+      <Stack direction="column" spacing='1px' bg='white' padding={2}>
         <Text
           as='h3'
           fontSize='2xs'

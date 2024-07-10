@@ -19,11 +19,12 @@ export const Header = ({ children }: HeaderProps) => {
               mt={1}
               letterSpacing={2}
               color='tigerOrange.600'
+              display={{ base: 'none', lg: 'block' }}
             >
               {TIGERHALL_TEXT}
             </Text>
           </Flex>
-          <Box m='auto' w='50%'>
+          <Box m='auto' width={{ md: '50%' }}>
             {children}
           </Box>
         </Flex>
