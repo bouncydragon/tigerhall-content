@@ -15,7 +15,7 @@ import { LuClock3, LuShare2, LuBookmark } from 'react-icons/lu';
 import { RiProgress3Line } from 'react-icons/ri';
 import { MdHeadset } from 'react-icons/md';
 
-import { TExpert } from '../../types/Content.ts';
+import { TUser } from '../../types/Content.ts';
 
 import './content-card.scss';
 import { COMPLETED_TEXT, MINUTES_LETTER } from '../../constants';
@@ -25,11 +25,11 @@ type TContentCard = {
   contentLength: number;
   contentCategory: string;
   contentName: string;
-  experts: TExpert[];
+  users: TUser[] | undefined;
 };
 
 export const ContentCard = (props: Readonly<TContentCard>): JSX.Element => {
-  const { contentImg, contentLength, contentCategory, contentName, experts } = props;
+  const { contentImg, contentLength, contentCategory, contentName, users } = props;
   return (
     <>
       <Box height={104} minHeight={104} bg='lightGray.300' width='100%'>
@@ -121,10 +121,10 @@ export const ContentCard = (props: Readonly<TContentCard>): JSX.Element => {
             color='lightGray.800'
             textOverflow='ellipsis'
           >
-            {experts.map(
-              (expert: TExpert, index: number): JSX.Element => (
+            {users?.map(
+              (user: TUser, index: number): JSX.Element => (
                 <Fragment key={index}>
-                  {`${expert.firstName} ${expert.lastName}${index < experts.length - 1 ? ', ' : ''}`}
+                  {`${user.firstName} ${user.lastName}${index < users.length - 1 ? ', ' : ''}`}
                 </Fragment>
               )
             )}
@@ -136,10 +136,10 @@ export const ContentCard = (props: Readonly<TContentCard>): JSX.Element => {
             color='lightGray.720'
             textOverflow='ellipsis'
           >
-            {experts.map(
-              (expert: TExpert, index: number): JSX.Element => (
+            {users?.map(
+              (user: TUser, index: number): JSX.Element => (
                 <Fragment key={index}>
-                  {`${expert.company}${index < experts.length - 1 && expert.company !== '' ? ', ' : ''}`}
+                  {`${user.company}${index < users.length - 1 && user.company !== '' ? ', ' : ''}`}
                 </Fragment>
               )
             )}

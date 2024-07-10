@@ -3,10 +3,11 @@ export type TEdge = {
   name: string;
   length: number;
   image: TImage;
-  experts: TExpert[];
+  experts?: TUser[];
+  participants?: TUser[];
 };
 
-export type TExpert = {
+export type TUser = {
   firstName: string;
   lastName: string;
   title: string;

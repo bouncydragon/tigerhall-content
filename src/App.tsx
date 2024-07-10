@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { Box, Container, Grid, GridItem, Heading } from '@chakra-ui/react';
 
@@ -10,7 +11,42 @@ import { TIGERHALL_LIBRARY } from './constants';
 import './App.scss';
 
 const App = (): JSX.Element => {
-  const { loading, error, data } = useQuery(GET_CONTENT_CARDS);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const { loading, error, fetchMore, data } = useQuery(GET_CONTENT_CARDS, {
+    variables: { limit: 10, offset: 0 },
+  });
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (
+        window.innerHeight + document.documentElement.scrollTop + 1 >=
+        document.documentElement.scrollHeight
+      ) {
+        handleFetchMore();
+      }
+    };
+
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [data, isLoadingMore]);
+
+  const handleFetchMore = () => {
+    if (!isLoadingMore) {
+      fetchMore({
+        variables: { offset: data?.contentCards?.edges.length },
+        updateQuery: (prevResult, { fetchMoreResult }) => {
+          if (!fetchMoreResult) return prevResult;
+          return {
+            contentCards: {
+              ...prevResult.contentCards,
+              edges: [...prevResult.contentCards.edges, ...fetchMoreResult.contentCards.edges],
+            },
+          };
+        },
+      }).finally(() => setIsLoadingMore(false));
+    }
+  };
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
 
@@ -24,7 +60,7 @@ const App = (): JSX.Element => {
         <Grid templateColumns='repeat(auto-fit, minmax(15rem, 1fr))' rowGap={12} columnGap={6}>
           {data?.contentCards?.edges.map((content: TEdge) => (
             <GridItem
-              key={content.id}
+              key={Math.random()}
               as='article'
               position='relative'
               minWidth={240}
@@ -39,7 +75,7 @@ const App = (): JSX.Element => {
                 contentName={content.name}
                 contentCategory={content.name}
                 contentLength={secondsToMinutes(content.length)}
-                experts={content.experts}
+                users={content.experts || content.participants}
               />
             </GridItem>
           ))}
