@@ -13,12 +13,14 @@ describe('ContentCard Component', () => {
     contentLength: 60,
     contentCategory: 'Leadership',
     contentName: 'Communicating as a Leader',
+    imageAlt: "Leadership image",
     users: mockUsers,
   };
 
   it('should render the content image and attributes correctly', () => {
     render(<ContentCard {...props} />);
-    const image = screen.getByRole('img', { name: 'Communicating as a Leader' });
+    screen.debug();
+    const image = screen.getByRole('img', { name: 'Leadership image' });
     expect(image).toHaveAttribute('src', 'http://example.com/image.jpg');
   });
 
@@ -33,13 +35,13 @@ describe('ContentCard Component', () => {
     expect(screen.getByText('60m')).toBeInTheDocument();
   });
 
-  it('should lists user names and companies', () => {
+  it('should list user names and companies', () => {
     render(<ContentCard {...props} />);
     expect(screen.getByText('Jane Doe, John Smith')).toBeInTheDocument();
     expect(screen.getByText('TechIndustry, Ecommerce')).toBeInTheDocument();
   });
 
-  it('should renders elements share and bookmark buttons', () => {
+  it('should render elements share and bookmark buttons', () => {
     render(<ContentCard {...props} />);
     expect(screen.getByRole('button', { name: 'Share' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Bookmark' })).toBeInTheDocument();

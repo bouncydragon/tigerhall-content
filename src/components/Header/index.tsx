@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Box, Container, Flex, Image, Text } from '@chakra-ui/react';
 import { TIGERHALL_TEXT } from '../../constants';
-import TigerhallLogo from '../../assets/tiegrhall-logo.svg';
+import TigerhallLogo from '../../assets/tigerhall-logo.svg';
 
 type HeaderProps = { children: ReactNode };
 

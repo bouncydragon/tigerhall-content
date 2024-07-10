@@ -24,7 +24,9 @@ import {
   IMPROVE_SEARCH,
   NO_RESULTS_FOUND,
   SEARCH_PLACEHOLDER,
+  SOMETHING_WENT_WRONG,
   TIGERHALL_LIBRARY,
+  TRY_AGAIN,
 } from './constants';
 
 import './App.scss';
@@ -77,8 +79,8 @@ const App = (): JSX.Element => {
     if (error) {
       return (
         <Flex color='lightGray.720' alignItems='center' flexDirection='column' padding='24'>
-          <Heading as='h6'>Something went wrong.</Heading>
-          <Text as='p'>{error.message}</Text>
+          <Heading as='h6'>{SOMETHING_WENT_WRONG}</Heading>
+          <Text as='p'>{TRY_AGAIN}</Text>
         </Flex>
       );
     }
@@ -100,7 +102,8 @@ const App = (): JSX.Element => {
               <ContentCard
                 contentImg={optimizeImageUri(content.image.uri)}
                 contentName={content.name}
-                contentCategory={content.categories[0].name || ''}
+                imageAlt={content.image.alt}
+                contentCategory={content?.categories[0]?.name || ''}
                 contentLength={secondsToMinutes(content.length)}
                 users={content.experts || content.participants}
               />
@@ -188,7 +191,6 @@ const App = (): JSX.Element => {
                 emptyColor='lightGray.600'
                 color='tigerOrange.600'
                 size='xl'
-                data-testid="loading-spinner"
               />
             </Flex>
           )}

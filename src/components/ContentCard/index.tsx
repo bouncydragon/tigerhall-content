@@ -16,20 +16,21 @@ import { RiProgress3Line } from 'react-icons/ri';
 import { MdHeadset } from 'react-icons/md';
 
 import { TUser } from '../../types/Content.ts';
+import { COMPLETED_TEXT, MINUTES_LETTER } from '../../constants';
 
 import './content-card.scss';
-import { COMPLETED_TEXT, MINUTES_LETTER } from '../../constants';
 
 type TContentCard = {
   contentImg: string;
   contentLength: number;
   contentCategory: string;
   contentName: string;
+  imageAlt: string;
   users: TUser[] | undefined;
 };
 
 export const ContentCard = (props: Readonly<TContentCard>): JSX.Element => {
-  const { contentImg, contentLength, contentCategory, contentName, users } = props;
+  const { contentImg, contentLength, contentCategory, contentName, imageAlt, users } = props;
   return (
     <>
       <Box height={104} minHeight={104} bg='lightGray.300' width='100%'>
@@ -52,7 +53,7 @@ export const ContentCard = (props: Readonly<TContentCard>): JSX.Element => {
         </Stack>
         <Image
           src={contentImg}
-          alt='Communicating as a Leader'
+          alt={imageAlt}
           height='100%'
           width='100%'
           objectFit='cover'
@@ -99,7 +100,7 @@ export const ContentCard = (props: Readonly<TContentCard>): JSX.Element => {
           color='lightGray.720'
           fontWeight='medium'
           textTransform='uppercase'
-          overflow="hidden"
+          overflow='hidden'
         >
           {contentCategory}
         </Text>
@@ -121,7 +122,7 @@ export const ContentCard = (props: Readonly<TContentCard>): JSX.Element => {
             fontWeight='medium'
             color='lightGray.800'
             textOverflow='ellipsis'
-            overflow="hidden"
+            overflow='hidden'
             isTruncated
           >
             {users?.map(
@@ -138,7 +139,7 @@ export const ContentCard = (props: Readonly<TContentCard>): JSX.Element => {
             fontWeight='bold'
             color='lightGray.720'
             textOverflow='ellipsis'
-            overflow="hidden"
+            overflow='hidden'
             isTruncated
           >
             {users?.map(
