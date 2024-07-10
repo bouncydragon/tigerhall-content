@@ -13,13 +13,12 @@ describe('ContentCard Component', () => {
     contentLength: 60,
     contentCategory: 'Leadership',
     contentName: 'Communicating as a Leader',
-    imageAlt: "Leadership image",
+    imageAlt: 'Leadership image',
     users: mockUsers,
   };
 
   it('should render the content image and attributes correctly', () => {
     render(<ContentCard {...props} />);
-    screen.debug();
     const image = screen.getByRole('img', { name: 'Leadership image' });
     expect(image).toHaveAttribute('src', 'http://example.com/image.jpg');
   });

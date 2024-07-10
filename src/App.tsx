@@ -7,6 +7,7 @@ import {
   Grid,
   GridItem,
   Heading,
+  Icon,
   Input,
   InputGroup,
   InputLeftElement,
@@ -14,6 +15,8 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
+import { ImFilesEmpty } from 'react-icons/im';
+import { FaQuestion } from 'react-icons/fa6';
 
 import { GET_CONTENT_CARDS } from './graphql/queries/contentCards.ts';
 import { Header, ContentCard, ContentCardLoader } from './components';
@@ -79,6 +82,7 @@ const App = (): JSX.Element => {
     if (error) {
       return (
         <Flex color='lightGray.720' alignItems='center' flexDirection='column' padding='24'>
+          <Icon as={FaQuestion} height={50} width={50} mb={5} />
           <Heading as='h6'>{SOMETHING_WENT_WRONG}</Heading>
           <Text as='p'>{TRY_AGAIN}</Text>
         </Flex>
@@ -114,6 +118,7 @@ const App = (): JSX.Element => {
     }
     return (
       <Flex color='lightGray.720' alignItems='center' flexDirection='column' padding='24'>
+        <Icon as={ImFilesEmpty} height={50} width={50} mb={5} />
         <Heading as='h6'>{NO_RESULTS_FOUND}</Heading>
         <Text as='p'>{IMPROVE_SEARCH}</Text>
       </Flex>
@@ -170,7 +175,13 @@ const App = (): JSX.Element => {
           />
         </InputGroup>
       </Header>
-      <Container maxW={1280} px={{ base: 5, sm: 10, md: 20 }} pb={5} pt={50}>
+      <Container
+        maxW={1280}
+        px={{ base: 5, sm: 10, md: 20 }}
+        pb={5}
+        pt={50}
+        minH='calc(100vh - 60px)'
+      >
         <Heading
           as='h2'
           fontSize='2xl'
@@ -181,7 +192,7 @@ const App = (): JSX.Element => {
         >
           {TIGERHALL_LIBRARY}
         </Heading>
-        <Box minH='100vh' width='100%'>
+        <Box width='100%'>
           {renderContent()}
           {isLoadingMore && (
             <Flex justifyContent='center' alignItems='center' mt={20} mb={10}>
