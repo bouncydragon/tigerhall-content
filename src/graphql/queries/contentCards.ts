@@ -1,15 +1,16 @@
 import { gql } from '@apollo/client';
 
 export const GET_CONTENT_CARDS = gql`
-  query GetContentCards($limit: Int!, $offset: Int!) {
+  query GetContentCards($limit: Int!, $offset: Int!, $keywords: String!) {
     contentCards(
-      filter: { limit: $limit, keywords: "", offset: $offset, types: [PODCAST, STREAM] }
+      filter: { limit: $limit, keywords: $keywords, offset: $offset, types: [PODCAST, STREAM] }
     ) {
       edges {
         ... on Podcast {
           id
           name
           length
+          slug
           image {
             alt
             uri
@@ -25,6 +26,7 @@ export const GET_CONTENT_CARDS = gql`
           id
           name
           length
+          slug
           image {
             alt
             uri

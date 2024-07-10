@@ -5,6 +5,7 @@ export type TEdge = {
   image: TImage;
   experts?: TUser[];
   participants?: TUser[];
+  slug: string;
 };
 
 export type TUser = {

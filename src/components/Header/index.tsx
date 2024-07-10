@@ -1,9 +1,11 @@
+import { ReactNode } from 'react';
 import { Box, Container, Flex, Image, Text } from '@chakra-ui/react';
-import { Search } from '../Search';
 import { TIGERHALL_TEXT } from '../../constants';
 import TigerhallLogo from '../../assets/tiegrhall-logo.svg';
 
-export const Header = () => {
+type HeaderProps = { children: ReactNode };
+
+export const Header = ({ children }: HeaderProps) => {
   return (
     <Box bg='darkGray.900'>
       <Container maxW={1280}>
@@ -22,7 +24,7 @@ export const Header = () => {
             </Text>
           </Flex>
           <Box m='auto' w='50%'>
-            <Search />
+            {children}
           </Box>
         </Flex>
       </Container>
